@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoteAquiAppWeb", "AdoteAquiAppWeb\AdoteAquiAppWeb.csproj", "{DDEBC5A7-8593-4672-AF5E-435B4C9A23FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDEBC5A7-8593-4672-AF5E-435B4C9A23FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDEBC5A7-8593-4672-AF5E-435B4C9A23FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDEBC5A7-8593-4672-AF5E-435B4C9A23FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDEBC5A7-8593-4672-AF5E-435B4C9A23FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {583DC9C9-339F-45A8-BF17-15ED59470322}
+	EndGlobalSection
+EndGlobal
