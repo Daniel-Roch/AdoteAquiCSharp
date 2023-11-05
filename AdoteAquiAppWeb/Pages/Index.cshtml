@@ -9,15 +9,18 @@
 
 <section class="row">
     @foreach (var animal in Model.ListAnimals) {
-        <div class="card border-success text-white bg-primary col-md-4 mb-4" style="max-width: 20rem; margin: 5px; border-radius: 5px;">
+        <div class="card border-success text-white bg-primary col-md-4 m-1" style="max-width: 20rem; border-radius: 5px;">
             <div class="card-header"><h4 class="card-title">@animal.Name</h4></div>
             <img src="@animal.Img" class="d-block user-select-none" style="max-height:200px; width: auto; height: auto;" alt="@animal.Name" title="@animal.Name" />
             <div class="card-body">
                 <p class="card-text">@animal.Description</p>
                 <p class="card-text">Local: @animal.Andress</p>
-                <h6 class="card-subtitle text-muted"><a href="@animal.Url" class="card-link">@animal.Url</a></h6>
+            </div>
+            <div class="d-grid" style="margin-bottom: 10px;">
+                <a class="btn btn-lg btn-success" type="button" asp-page="/Details" asp-route-id="@animal.Id">Ver mais</a>
             </div>
         </div>
+        
     }
 </section>
 
