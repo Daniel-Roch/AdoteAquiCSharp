@@ -1,0 +1,24 @@
+﻿@page "/AdoteAqui/{slug}/{id:int:min(1)}"
+@model DetailsModel
+
+<header class="bg-primary text-white text-center py-5">
+    <h1>Detalhes:</h1>
+    <p>Aqui você irá encontrar detalhes do seu amiguinho!</p>
+</header>
+
+<div class="row mt-3">
+    <section class="col-lg-6">
+        <img src="@Model.AnimalDetails?.Img" class="d-block user-select-none" style="max-height:50%; width: auto; height: auto;" alt="@Model.AnimalDetails.Name" title="@Model.AnimalDetails.Name" />
+    </section>
+    <section class="col-lg-6">
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+            <div class="card-header text-center"><h4 class="card-title">@Model.AnimalDetails.Name</h4></div>
+            <div class="card-body">
+                <p class="card-text">@Model.AnimalDetails.Description</p>
+                <p class="card-text">Disponível para adoção: @Model.AnimalDetails.AdoptionShadow</p>
+                <p class="card-text"><label asp-for="AnimalDetails.Andress"></label> : @Model.AnimalDetails.Andress</p>
+                <h6 class="card-subtitle text-muted"><a href="@Model.AnimalDetails.Url" class="card-link">Link da página: @Model.AnimalDetails.Url</a></h6>
+            </div>
+        </div>
+    </section>
+</div>
