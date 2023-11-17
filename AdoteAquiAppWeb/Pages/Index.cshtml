@@ -29,4 +29,24 @@
     }
 </section>
 
+<section class="bg-primary text-white text-center py-5">
+    <h1>Mensagem dos Clientes:</h1>
+    <p>Confira a mensagem dos clientes:</p>
+</section>
+
+<section class="row">
+    @if (Model.ListClientAdoption.Count > 0) {
+        foreach (var client in Model.ListClientAdoption) {
+            <div class="card border-success text-white bg-primary col-md-4 m-1" style="max-width: 20rem; border-radius: 5px;">
+                <div class="card-header text-center"><h4 class="card-title">@client.Name</h4></div>
+                <div class="card-body">
+                    <p class="card-text">Comentário: @client.Descript</p>
+                </div>
+            </div>
+        }
+    } else {
+        <p>Em Construção...</p>
+    }
+</section>
+
 

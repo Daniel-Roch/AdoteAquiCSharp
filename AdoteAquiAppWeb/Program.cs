@@ -1,7 +1,12 @@
+using AdoteAquiAppWeb.Interfaces;
+using AdoteAquiAppWeb.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton<IClientAdoptionService, ClientAdoptionService>();
 
 var app = builder.Build();
 
