@@ -7,8 +7,10 @@ namespace AdoteAquiAppWeb.Pages;
 public class IndexModel : PageModel {
 
     private IClientAdoptionService _clientAdoptionService;
-    public IndexModel(IClientAdoptionService serviceClient) {
+    private IAnimalsServices _animalsServices;
+    public IndexModel(IClientAdoptionService serviceClient, IAnimalsServices animalsServices) {
         _clientAdoptionService = serviceClient;
+        _animalsServices = animalsServices;
     }
 
     public IList<Animal> ListAnimals { get; private set; }
@@ -17,9 +19,8 @@ public class IndexModel : PageModel {
     public void OnGet() {
         ViewData["Title"] = "Home";
         //Por causa da injeção de dependencia, eu não preciso mais dessa parte
-        AnimalsServices animalServices = new AnimalsServices();
         //ClientAdoptionService clientAdoption = new ClientAdoptionService();
-        ListAnimals = animalServices.AllAnimals();
+        ListAnimals = _animalsServices.AllAnimals();
         ListClientAdoption = _clientAdoptionService.AllClients();
     }
 }

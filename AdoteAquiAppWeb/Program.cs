@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IClientAdoptionService, ClientAdoptionService>();
+builder.Services.AddSingleton<IAnimalsServices, AnimalsServices>();
 
 var app = builder.Build();
 

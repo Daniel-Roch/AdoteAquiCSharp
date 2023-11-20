@@ -1,9 +1,16 @@
-﻿using AdoteAquiAppWeb.Models;
+﻿using AdoteAquiAppWeb.Interfaces;
+using AdoteAquiAppWeb.Models;
 
 namespace AdoteAquiAppWeb.Services;
-public class AnimalsServices {
-    public IList<Animal> AllAnimals() {
-        return new List<Animal>() {
+public class AnimalsServices : IAnimalsServices {
+
+    public AnimalsServices() => LoadAnimals();
+    private IList<Animal> _animals;
+
+    public IList<Animal> AllAnimals() => _animals;
+
+    public void LoadAnimals() {
+        _animals = new List<Animal>() {
         new Animal(1,"Biscoito", "/images/Biscoito.jpg", "https://www.amigonaosecompra.com.br/pets/biscoito-rio-de-janeiro-rio-de-janeiro-macho-b58cdfc2-22fe-4085-a648-beb624d0b095", true, "Biscoito é muito divertido! Adora bolinhas e receber carinho! Um gatinho muito especial!", "Rio de Janeiro - Rio de janeiro"),
         new Animal(2,"BomBom", "/images/BomBom.jpg", "https://www.amigonaosecompra.com.br/pets/bombom-sao-paulo-sao-paulo-femea-46d35523-eb9f-4910-a131-b8d14ffe7792", true, "BOMBOM é outro doce de gatinha. Ama um colinho é ronronenta e muito carinhosa. Também é brincalhona e cheia de charme.", "São Paulo - São Paulo"),
         new Animal(3,"Eliana", "/images/Eliana.jpg", "https://www.amigonaosecompra.com.br/pets/filhotes-eliana-sao-paulo-sao-paulo-femea-3c2dbd0c-bcc4-4a77-a63b-bde1bca081e9", true, "Eliana é uma gatinha doce, adora brincar e ficar de grude.", "São Paulo - São Paulo"),
@@ -14,5 +21,33 @@ public class AnimalsServices {
         new Animal(8,"Vitoria", "/images/Vitoria.jpeg", "https://www.amigonaosecompra.com.br/pets/vitoria-sao-paulo-sao-paulo-femea-4fa6b388-6319-4c86-aadb-38d5a5648d10", true, "3 meses de muita fofura, pesando 2,5kg, vai ficar porte pequeno pra médio, vermifugado, para lares 100% seguros.", "São Paulo - São Paulo"),
         };
     }
-    public Animal getAnimal(int id)  => AllAnimals().SingleOrDefault( animal => animal.Id == id);
+    //Add dora: https://www.amigonaosecompra.com.br/pets/dora-pernambuco-paulista-femea-a6f8b10f-f08e-4076-bf84-3cdc5bf08862
+    //img /images/Dora.jpg
+    //Gata Angorá, aproximadamente 4 meses, encontrada abandonada em um ponto de ônibus perto do Hotel Cupido. Muito curiosa e brincalhona. Está em um lar temporário de pouco espaço, com outros três gatos. Terá o pelo grande, cheio e macio.
+    //Paulista, Pernambuco
+    public Animal GetAnimal(int id)  => _animals.SingleOrDefault( animal => animal.Id == id);
+
+    public void SetAnimal(Animal animal) {
+        int nextId = _animals.Count > 0 ? _animals.Max(animal => animal.Id) : 0;
+        animal.Id = nextId + 1;
+        _animals.Add(animal);
+    }
+
+    public void AlterAnimal(Animal animal) {
+        Animal modific = _animals.SingleOrDefault(item => item.Id == animal.Id);
+        if (modific != null) {
+            modific.Name = animal.Name;
+            modific.Andress = animal.Andress;
+            modific.Img = animal.Img;
+            modific.Url = animal.Url;
+            modific.Description = animal.Description;
+        }
+
+    }
+
+    public void DeleteAnimal(int id) {
+        Animal animalId = GetAnimal(id);
+        _animals.Remove(animalId);
+    }
+
 }

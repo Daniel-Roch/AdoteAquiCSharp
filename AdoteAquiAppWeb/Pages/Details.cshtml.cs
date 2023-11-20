@@ -1,3 +1,4 @@
+using AdoteAquiAppWeb.Interfaces;
 using AdoteAquiAppWeb.Models;
 using AdoteAquiAppWeb.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -7,11 +8,14 @@ namespace AdoteAquiAppWeb.Pages
 {
     public class DetailsModel : PageModel
     {
-        public Animal? AnimalDetails { get; private set; }
+        private IAnimalsServices _animalsService;
+        public DetailsModel(IAnimalsServices service) {
+            _animalsService = service;
+        }
+        public Animal? AnimalDetails { get; set; }
         public IActionResult OnGet(int id)
         {
-            AnimalsServices animalServices = new AnimalsServices();
-            AnimalDetails = animalServices.getAnimal(id);
+            AnimalDetails = _animalsService.GetAnimal(id);
 
             if (AnimalDetails == null) {
                 return NotFound();
