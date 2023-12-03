@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdoteAquiAppWeb.Models;
+[Table("TBL_ANIMAL")]
 public class Animal {
+    [Key]
     public int Id { get; set; }
     [Required(ErrorMessage = "Campo Nome obrigatório.")]
     [StringLength(20, MinimumLength = 3, ErrorMessage = "Caracteres inválidos.")]
@@ -19,6 +22,9 @@ public class Animal {
     [Display(Name = "Local")]
     public string Andress { get; set; }
 
+    [Display(Name="Raça")]
+    public int? BreedId {  get; set; }
+
     public Animal() { }
 
     public Animal(int id, string name, string img, string url, bool adoption, string description, string andress) {
@@ -30,12 +36,12 @@ public class Animal {
         Description = description;
         Andress = andress;
     }
-    public Animal(int id, string name, string img, string url, string description, string andress) {
+    public Animal(int id, string name, string img, string url, string description, string andress, bool adoption = true) {
         Id = id;
         Name = name;
         Img = img;
         Url = url;
-        Adoption = true;
+        Adoption = adoption;
         Description = description;
         Andress = andress;
     }

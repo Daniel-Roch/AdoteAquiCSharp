@@ -1,13 +1,18 @@
+using AdoteAquiAppWeb.Data;
 using AdoteAquiAppWeb.Interfaces;
-using AdoteAquiAppWeb.Services;
+using AdoteAquiAppWeb.Services.Data;
+using AdoteAquiAppWeb.Services.Mock;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<IClientAdoptionService, ClientAdoptionService>();
-builder.Services.AddSingleton<IAnimalsServices, AnimalsServices>();
+builder.Services.AddTransient<IClientAdoptionService, ClientAdoptionService>();
+builder.Services.AddTransient<IAnimalsServices, AnimalsServices>();
+
+//Conectar o DB     
+builder.Services.AddDbContext<AdoteAquiDbContext>();
 
 var app = builder.Build();
 
