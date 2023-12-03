@@ -17,6 +17,9 @@
                 <p class="card-text">@Model.AnimalDetails.Description</p>
                 <p class="card-text">Disponível para adoção: @Model.AnimalDetails.AdoptionShadow</p>
                 <p class="card-text"><label asp-for="AnimalDetails.Andress"></label> : @Model.AnimalDetails.Andress</p>
+                @if (Model.DescriptBreed is not null) {
+                    <p class="card-text"><label asp-for="AnimalDetails.BreedId"></label> : @Model.DescriptBreed</p>
+                }
                 <h6 class="card-subtitle text-muted"><a href="@Model.AnimalDetails.Url" class="card-link">Link da página: @Model.AnimalDetails.Url</a></h6>
             </div>
         </div>

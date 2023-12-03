@@ -8,5 +8,6 @@ public interface IAnimalsServices {
     void AlterAnimal(Animal animal);
     void DeleteAnimal(int id);
     IList<Breed> AllBreeds();
+    Breed GetBreed(int id);
 }
 

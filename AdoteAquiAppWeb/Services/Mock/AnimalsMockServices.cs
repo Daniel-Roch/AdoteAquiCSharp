@@ -59,4 +59,6 @@ public class AnimalsMockServices : IAnimalsServices
     public IList<Breed> AllBreeds() {
         throw new NotImplementedException();
     }
+
+    public Breed GetBreed(int id) => throw new NotImplementedException();
 }

@@ -9,6 +9,8 @@ namespace AdoteAquiAppWeb.Pages
     public class DetailsModel : PageModel
     {
         private IAnimalsServices _animalsService;
+        public string DescriptBreed { get; set; }
+
         public DetailsModel(IAnimalsServices service) {
             _animalsService = service;
         }
@@ -16,6 +18,10 @@ namespace AdoteAquiAppWeb.Pages
         public IActionResult OnGet(int id)
         {
             AnimalDetails = _animalsService.GetAnimal(id);
+            //Como pode ser null, quero pegar seu valor inteiro
+            if (AnimalDetails.BreedId is not null) {
+                DescriptBreed = _animalsService.GetBreed(AnimalDetails.BreedId.Value).Name;
+            }
 
             if (AnimalDetails == null) {
                 return NotFound();

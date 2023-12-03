@@ -43,4 +43,5 @@ public class AnimalsServices : IAnimalsServices {
         _context.SaveChanges();
     }
     public IList<Breed> AllBreeds() => _context.Breeds.ToList();
+    public Breed GetBreed(int id) => _context.Breeds.SingleOrDefault(breed => breed.BreedId == id);
 }
