@@ -3,6 +3,7 @@ using AdoteAquiAppWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using NToastNotify;
 
 namespace AdoteAquiAppWeb.Pages
 {
@@ -10,8 +11,11 @@ namespace AdoteAquiAppWeb.Pages
     {
         private IAnimalsServices _animalsServices;
         public SelectList BreedOptions { get; set; }
-        public EditDetailsModel(IAnimalsServices service) {
+        private IToastNotification _toastNotification;
+
+        public EditDetailsModel(IAnimalsServices service, IToastNotification toastNotification) {
             _animalsServices = service;
+            _toastNotification = toastNotification;
         }
          
         [BindProperty]
@@ -34,13 +38,13 @@ namespace AdoteAquiAppWeb.Pages
             }
 
             _animalsServices.AlterAnimal(animal);
-            TempData["EditSucess"] = true;
+            _toastNotification.AddSuccessToastMessage("Card editado com sucesso!");
             return RedirectToPage("/Index");
         }
 
         public IActionResult OnPostDelete() {
             _animalsServices.DeleteAnimal(animal.Id);
-            TempData["EditDelete"] = true;
+            _toastNotification.AddAlertToastMessage("Card deletado com sucesso!");
             return RedirectToPage("/Index");
         }
     }

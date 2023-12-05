@@ -18,8 +18,9 @@ namespace AdoteAquiAppWeb.Pages
         public IActionResult OnGet(int id)
         {
             AnimalDetails = _animalsService.GetAnimal(id);
-            //Como pode ser null, quero pegar seu valor inteiro
+
             if (AnimalDetails.BreedId is not null) {
+                //Como pode ser null, quero pegar seu valor inteiro
                 DescriptBreed = _animalsService.GetBreed(AnimalDetails.BreedId.Value).Name;
             }
 

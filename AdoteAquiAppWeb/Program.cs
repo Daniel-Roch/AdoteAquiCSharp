@@ -3,11 +3,18 @@ using AdoteAquiAppWeb.Interfaces;
 using AdoteAquiAppWeb.Services.Data;
 using AdoteAquiAppWeb.Services.Mock;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+                .AddNToastNotifyToastr(new ToastrOptions() {
+                    ProgressBar = true,
+                    PositionClass = ToastPositions.BottomRight,
+                    TimeOut = 5000,
+                    PreventDuplicates = true,
+                });
 
 builder.Services.AddTransient<IClientAdoptionService, ClientAdoptionService>();
 builder.Services.AddTransient<IAnimalsServices, AnimalsServices>();
@@ -31,6 +38,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseNToastNotify();
 
 app.UseAuthorization();
 

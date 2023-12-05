@@ -17,9 +17,10 @@ public class AdoteAquiDbContext : DbContext {
             .AddJsonFile("appsettings.json")
             .Build();
 
-        var stringCon = config.GetConnectionString("StringConnection");
+        //var stringCon = config.GetConnectionString("StringConnection");
+        var stringCon = config.GetConnectionString("StringConnectionSQLite");
 
-        optionsBuilder.UseSqlServer(stringCon);
+        optionsBuilder.UseSqlite(stringCon);
     }
 
 }
