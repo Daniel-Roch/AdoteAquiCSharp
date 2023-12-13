@@ -1,11 +1,13 @@
 using AdoteAquiAppWeb.Interfaces;
 using AdoteAquiAppWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdoteAquiAppWeb.Pages
 {
+    [Authorize]
     public class RegisterModel : PageModel
     {
         public SelectList BreedOptions { get; set; }

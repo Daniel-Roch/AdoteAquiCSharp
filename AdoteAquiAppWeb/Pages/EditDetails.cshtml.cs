@@ -1,5 +1,6 @@
 using AdoteAquiAppWeb.Interfaces;
 using AdoteAquiAppWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,6 +8,7 @@ using NToastNotify;
 
 namespace AdoteAquiAppWeb.Pages
 {
+    [Authorize]
     public class EditDetailsModel : PageModel
     {
         private IAnimalsServices _animalsServices;

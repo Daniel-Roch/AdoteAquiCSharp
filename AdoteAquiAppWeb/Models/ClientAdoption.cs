@@ -3,7 +3,7 @@
 namespace AdoteAquiAppWeb.Models;
 public class ClientAdoption {
 
-    public int ClientId { get; set; }
+    public int ClientAdoptionId { get; set; }
 
     [Required(ErrorMessage = "Campo Nome obrigatório.")]
     [StringLength(50, MinimumLength = 10, ErrorMessage = "Caracteres inválidos.")]
@@ -29,7 +29,7 @@ public class ClientAdoption {
     public ClientAdoption() {}
 
     public ClientAdoption( int clietId, string name, string email, DateTime dateBirth, string descript) {
-        ClientId = clietId;
+        ClientAdoptionId = clietId;
         Name = name;
         Email = email;
         DateBirth = dateBirth;

@@ -23,6 +23,8 @@
                 <h6 class="card-subtitle text-muted"><a href="@Model.AnimalDetails.Url" class="card-link">Link da página: @Model.AnimalDetails.Url</a></h6>
             </div>
         </div>
-        <a asp-page="/EditDetails" asp-route-id="@Model.AnimalDetails.Id" class="btn btn-light">Editar</a>
+        @if (User.Identity.IsAuthenticated) {
+            <a asp-page="/EditDetails" asp-route-id="@Model.AnimalDetails.Id" class="btn btn-light">Editar</a>
+        }
     </section>
 </div>

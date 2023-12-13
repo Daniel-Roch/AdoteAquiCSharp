@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="Inico" asp-page="/Index">AdoteAqui</a>
+                <a class="navbar-brand" asp-page="/Index">AdoteAqui</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,9 +25,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-page="/Register">Cadastro</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" asp-page="/AboutUs">Quem Somos</a>
                         </li>
                         <li class="nav-item">
@@ -36,11 +33,17 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-page="/Contact">Contato</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated) {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Breeds/Index">Raças</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Register">Cadastro</a>
+                            </li>
+                        }
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    <!--Mostra se está logado ou não-->
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
